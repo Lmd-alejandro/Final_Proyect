@@ -6,7 +6,8 @@ const Config = {
     userDB: process.env.USER_DB,
     passwordDB: process.env.PASSWORD_DB,
     nameDB: process.env.NAME_DB,
-    keyToken: process.env.KEY_TOKEN
+    keyToken: process.env.KEY_TOKEN,
+    portDB: process.env.PORT_DB,
 };
 
 module.exports = Config;

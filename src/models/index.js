@@ -6,17 +6,18 @@ const Config = require('../config/index');
 console.log(Config);
 
 const {
-  HOST_DB,
-  USER_DB,
-  PASSWORD_DB,
-  NAME_DB,
+  hostDB,
+  userDB,
+  passwordDB,
+  nameDB,
+  portDB
 
 } = Config;
 
-const sequelize = new Sequelize(NAME_DB, USER_DB, PASSWORD_DB, {
+const sequelize = new Sequelize(nameDB, userDB, passwordDB, {
   dialect: 'mysql',
-  port: PORT_DB,
-  host: HOST_DB,
+  port: portDB,
+  host: hostDB,
   logging: false,
 });
 
