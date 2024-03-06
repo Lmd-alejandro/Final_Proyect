@@ -1,5 +1,6 @@
-const {config}=require('dotenv')
-config()
+const { config } = require('dotenv');
+const result = config();
+
 const Config = {
     port: process.env.PORT || 3000,
     hostDB: process.env.HOST_DB,

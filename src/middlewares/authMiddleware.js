@@ -11,9 +11,9 @@ module.exports = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, config.KEYTOKEN); 
+        const decoded = jwt.verify(token, config.keyToken); 
         const { email } = decoded;
-        const { users } = loadData();
+        const { users } = loadData(); 
         const user = users.find((u) => u.email === email);
 
         if (!user) {

@@ -1,20 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-    const Order = sequelize.define("Order", {
-    id: {
-        type: DataTypes.BIGINT(20),
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    clientId: {
-        type: DataTypes.BIGINT(20),
-        allowNull: false,
-    },
+    const product = sequelize.define("product", {
+        id: {
+            type: DataTypes.BIGINT(20),
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        clientId: {
+            type: DataTypes.BIGINT(20),
+            allowNull: false,
+        },
     },
     {
-    tableName: "orders",
-    timestamps: false,
+        tableName: "products",
+        timestamps: false,
     });
 
-
+    return product;
 };
-    return Order;
