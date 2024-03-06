@@ -1,16 +1,38 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const config = require("./config/index");
+const config = require("./src/config/index");
+const { Sequelize } = require("sequelize");
+const cors = require("cors");
 
-const clientRoutes = require("./routes/clientRoutes");
-const productRoutes = require("./routes/productRoutes");
-const orderRoutes = require("./routes/orderRoutes");
-const authMiddleware = require("./middleware/authMiddleware");
+const clientRoutes = require("./src/routes/clienteRoutes");
+const productRoutes = require("./src/routes/productoRoutes");
+const orderRoutes = require("./src/routes/pedidoRoutes");
+const authMiddleware = require("./src/middlewares/authMiddleware");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
+
+// Configuración de la conexión a la base de datos MySQL
+const sequelize = new Sequelize(config.NAME_DB, config.USER_DB, config.PASSWORD_DB, {
+  host: config.HOST_DB,
+  port: config.PORT_DB,
+  dialect: "mysql",
+});
+
+// Verificar conexión a la base de datos
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection to the database has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
+
+// Definir modelos y asociaciones aquí
 
 app.use('/clients', authMiddleware, clientRoutes);
 app.use('/products', authMiddleware, productRoutes);

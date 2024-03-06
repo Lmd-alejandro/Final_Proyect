@@ -1,8 +1,12 @@
-module.exports = {
-    PORT: process.env.PORT,
-    NAME_DB: process.env.NAME_DB,
-    USER_DB: process.env.USER_DB,
-    PASSWORD_DB: process.env.PASSWORD_DB,
-    PORT_DB: process.env.PORT_DB,
-    HOST_DB: process.env.HOST_DB,
+const {config}=require('dotenv')
+config()
+const Config = {
+    port: process.env.PORT || 3000,
+    hostDB: process.env.HOST_DB,
+    userDB: process.env.USER_DB,
+    passwordDB: process.env.PASSWORD_DB,
+    nameDB: process.env.NAME_DB,
+    keyToken: process.env.KEY_TOKEN
 };
+
+module.exports = Config;
